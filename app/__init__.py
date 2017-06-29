@@ -1,8 +1,11 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 
 # local imports
 from config import app_config
+
+db = SQLAlchemy()
 
 
 def create_app(config_mode):
@@ -15,5 +18,7 @@ def create_app(config_mode):
     """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_mode])
+
+    db.init_app(app)
 
     return app
