@@ -25,3 +25,10 @@ class Production(Config):
 
     DEBUG = False because this class inherits from Config class.
     """
+
+
+app_config = {
+    "development": Development,
+    "testing": Testing,
+    "production": Production
+}
