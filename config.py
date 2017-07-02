@@ -5,6 +5,8 @@ class Config(object):
     Common configurations.
     """
     DEBUG = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 class Development(Config):
@@ -22,6 +24,7 @@ class Testing(Config):
     """
     Testing configurations.
     """
+    TESTING = True
     # Debug is set to false
     base_dir = os.path.join(os.path.dirname(__file__))
     # define test db
@@ -36,6 +39,7 @@ class Production(Config):
 
     DEBUG = False because this class inherits from Config class.
     """
+    TESTING = False
 
 
 app_config = {
