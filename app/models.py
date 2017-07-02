@@ -30,6 +30,7 @@ class Challenge(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(5000), index=True, nullable=False)
     developer_level = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now)
 
 
 class Language(db.Model):
@@ -40,6 +41,7 @@ class Language(db.Model):
     __tablename__ = 'languages'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), index=True, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now)
 
 
 class LanguageUser(db.Model):
@@ -62,18 +64,19 @@ class Review(db.Model):
     __tablename__ = 'reviewers'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    challenge_id = db.Column(db.Integer, db.ForeignKey('challenges.id'))
+    solution_id = db.Column(db.Integer, db.ForeignKey('solutions.id'))
     reviewer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comment = db.Column(db.String(1500), index=True, nullable=False)
+    reviewed_at = db.Column(db.DateTime, default=datetime.now)
 
 
-class UserChallenge(db.Model):
+class Solution(db.Model):
     """
     Define user-challenge fields.
     Contains attributes for attempted programming challenges.
     """
 
-    __tablename__ = 'user_challenges'
+    __tablename__ = 'solutions'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user_solution = db.Column(db.String(5000), index=True, nullable=False)
