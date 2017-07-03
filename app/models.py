@@ -3,10 +3,9 @@ Define application models.
 """
 from datetime import datetime
 
+from flask_sqlalchemy import SQLAlchemy
 
-# local imports
-from app import db
-
+db = SQLAlchemy()
 
 class User(db.Model):
     """
