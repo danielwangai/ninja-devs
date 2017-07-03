@@ -27,3 +27,28 @@ class UserLogin(Resource):
         To handle login
         """
         pass
+
+
+class UserRegistration(Resource):
+    """
+    To handle user registration.
+    """
+    def __init__(self):
+        """
+        Define parameters for user registration.
+        """
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument("username", type=str,
+                                   help="Username required",
+                                   required=True
+                                   )
+        self.reqparse.add_argument("password", type=str,
+                                   help="Password required",
+                                   required=True
+                                   )
+
+    def post(self):
+        """
+        To create a new user.
+        """
+        pass
