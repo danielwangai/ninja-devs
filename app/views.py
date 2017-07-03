@@ -29,9 +29,9 @@ class UserLogin(Resource):
         pass
 
 
-class UserRegistration(Resource):
+class UserResource(Resource):
     """
-    To handle user registration.
+    To handle CRUD operations on a user.
     """
     def __init__(self):
         """
@@ -50,5 +50,24 @@ class UserRegistration(Resource):
     def post(self):
         """
         To create a new user.
+        """
+        pass
+
+    def get(self, id=None):
+        """
+        To list all users if no <id> is passed.
+        Otherwise lists user matching <id>.
+        """
+        pass
+
+    def put(self, id):
+        """
+        To update user given valid user id.
+        """
+        pass
+
+    def delete(self, id):
+        """
+        To delete user.
         """
         pass
