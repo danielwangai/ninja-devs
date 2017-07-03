@@ -5,7 +5,8 @@ import unittest
 
 
 # local imports
-from app import create_app, db
+from app import create_app
+from app.models import db
 
 
 class BaseTestCase(unittest.TestCase):
