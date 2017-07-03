@@ -8,7 +8,7 @@ from flask_restful import Api
 
 # local imports
 from config import app_config
-
+from app.views import UserLogin, UserResource
 api_blueprint = Blueprint('api', __name__)
 api = Api(api_blueprint)
 db = SQLAlchemy()
@@ -28,6 +28,15 @@ def create_app(config_mode):
     from app import models
     db.init_app(app)
     app.register_blueprint(api_blueprint)
+
+    # define endpoints
+    api.add_resource(UserResource, "/api/v1/auth/register",
+                     endpoint="user_register"
+                     )
+    api.add_resource(UserLogin, "/api/v1/auth/login",
+                     "/api/v1/users",
+                     endpoint="user_login"
+                     )
 
     migrate = Migrate(app, db)
     manager = Manager(app)
